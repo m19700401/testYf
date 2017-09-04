@@ -3,9 +3,39 @@ package returnValue;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Valur {
+class Valur {
 
-	Map<String, Object> m = new HashMap<>();
+	/**
+	 * main
+	 *
+	 * @param args
+	 */
+	public static void main(String[] args) {
 
+		Valur ret = new Valur();
+		ret.set("str", "STRING");
+		ret.set("int",  123456);
+
+		Valur ret2 = ret;
+		System.out.println( ret2.get("str") );
+		System.out.println( ret2.get("int") );
+
+	}
+
+	// int以外対応
+
+	Map<String, Object> obj = new HashMap<>();
+
+	public Object get(String key) {
+
+		if (obj.containsKey(key)) {
+			return obj.get(key);
+		}
+		return null;
+	}
+
+	public void set(String key, Object value) {
+		obj.put(key, value);
+	}
 
 }
